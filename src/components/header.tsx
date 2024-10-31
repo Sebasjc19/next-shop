@@ -22,13 +22,18 @@ export default function Header() {
 
 
                 <div className="round">
+                    <Link href="/" passHref>
                     <Image
                         src="/next-shop.jpeg"
                         width={30}
                         height={30}
                         alt="Icono de next-shop"
                     />
+                    </Link>
+                    
+                                       
                 </div>
+                
 
                 <div className="d-flex align-items-center justify-content-center ">
                     <form className="me-2" role="search">
