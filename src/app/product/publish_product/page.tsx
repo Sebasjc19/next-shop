@@ -6,6 +6,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Boton_agregar_imagen from '@/components/botones/boton-agregar-imagen';
 import Carrusel_producto_publicacion from '@/components/imagenes/carrusel-producto-publicar';
 import ContenedorCarruselYBoton from '@/components/botones/carrusel-y-boton.';
+import categorias from '@/data/categories';
+import AlertaExito from '@/components/alertas/exito';
 
 export default function Publish_product() {
 
@@ -15,6 +17,8 @@ export default function Publish_product() {
         'https://mundocine.es/wp-content/uploads/2024/09/TheWildRobot_Fotopelicula_31454.jpg'
     ];
 
+    categorias
+
     return (
         <div className="container text-start">
 
@@ -22,7 +26,7 @@ export default function Publish_product() {
                 <p className="text-center fs-1 fw-bold">Registrar producto</p>
                 <div className="col">
                     <div className="row">
-                        <ContenedorCarruselYBoton/>
+                        <ContenedorCarruselYBoton />
                     </div>
                 </div>
 
@@ -30,16 +34,16 @@ export default function Publish_product() {
                     <div className="p-3 bg-info bg-opacity-10 border border-info rounded-end">
                         <div className="row">
                             <div className="mb-3">
-                                <label htmlFor="exampleInputEmail1" className="form-label">Nombre del producto</label>
-                                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                                <div id="emailHelp" className="form-text">Dale a tu producto un nombre claro y corto</div>
+                                <label htmlFor="nombreProducto" className="form-label">Nombre del producto</label>
+                                <input type="text" className="form-control" id="nombreProducto" aria-describedby="nombreAyuda" />
+                                <div id="nombreAyuda" className="form-text">Dale a tu producto un nombre claro y corto</div>
                             </div>
                         </div>
 
                         <div className="row">
                             <div className="mb-3">
-                                <label htmlFor="exampleFormControlTextarea1" className="form-label">Descripción del producto</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows={5}></textarea>
+                                <label htmlFor="descripcionProducto" className="form-label">Descripción del producto</label>
+                                <textarea className="form-control" id="descripcionProducto" rows={5}></textarea>
                             </div>
                         </div>
 
@@ -48,9 +52,11 @@ export default function Publish_product() {
                                 <option value="" disabled>
                                     Selecciona una categoría
                                 </option>
-                                <option value="1">Electrónica</option>
-                                <option value="2">Aseo</option>
-                                <option value="3">Comida</option>
+                                {categorias.map((categoria) => (
+                                    <option key={categoria.id} value={categoria.id}>
+                                        {categoria.nombre}
+                                    </option>
+                                ))}
                             </select>
                         </div>
                         <div className="row">

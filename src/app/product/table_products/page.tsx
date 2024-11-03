@@ -1,50 +1,13 @@
 "use client"
 
+import productos from "@/data/products"
 import Fila_producto from "@/components/fila-producto"
 import Link from "next/link"
 
 export default function Table_products() {
 
     // Información de los productos
-    const productos = [
-        {
-            id: '1',
-            nombre: 'Pokemon Rojo Fuego',
-            precio: '$10.00',
-            stock:12
-        },
-        {
-            id:'2',
-            nombre: 'Nintendo Switch',
-            precio: '$15.00',
-            stock:20
-        },
-        // Agrega más productos aquí
-        {
-            id: '3',
-            nombre: 'The Legend of Zelda: Breath of the Wild',
-            precio: '$25.00',
-            stock: 8
-        },
-        {
-            id: '4',
-            nombre: 'Super Mario Odyssey',
-            precio: '$20.00',
-            stock: 15
-        },
-        {
-            id: '5',
-            nombre: 'PlayStation 5',
-            precio: '$499.00',
-            stock: 5
-        },
-        {
-            id: '6',
-            nombre: 'Xbox Series X',
-            precio: '$499.00',
-            stock: 7
-        },
-    ];
+    productos
 
     return (
         <div className="container text-center">
@@ -75,7 +38,7 @@ export default function Table_products() {
                                     id={producto.id}
                                     nombre={producto.nombre}
                                     precio={producto.precio}
-                                    stock={producto.stock}
+                                    cantidad={producto.cantidad}
                                 />
                             ))}
                         </tbody>

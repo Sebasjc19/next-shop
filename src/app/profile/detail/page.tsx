@@ -1,25 +1,12 @@
 "use client"
 
+import productos from "@/data/products"
 import Producto_perfil from "@/components/tarjetas/producto-perfil"
 
 export default function Detail() {
 
     // Información de los productos
-    const productos = [
-        {
-            imagen: 'https://www.boningtontheatre.co.uk/wp-content/uploads/2024/09/the-wild-robot-668ec3182e643.jpg',
-            nombre: 'Producto 1',
-            precio: '$10.00',
-            fecha: '2024-11-01',
-        },
-        {
-            imagen: 'https://variety.com/wp-content/uploads/2024/09/The-Wild-Robot.jpg?w=1000&h=563&crop=1',
-            nombre: 'Producto 2',
-            precio: '$15.00',
-            fecha: '2024-11-02',
-        },
-        // Agrega más productos aquí
-    ];
+    productos
 
     return (
         <div className="container text-center">
@@ -47,7 +34,7 @@ export default function Detail() {
                                     imagen={producto.imagen}
                                     nombre={producto.nombre}
                                     precio={producto.precio}
-                                    fecha={producto.fecha}
+                                    fecha={"fecha pendiente de organizar"}
                                 />
                             ))}
                         </div>

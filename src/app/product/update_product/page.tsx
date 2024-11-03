@@ -7,8 +7,12 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Boton_agregar_imagen from '@/components/botones/boton-agregar-imagen';
 import Carrusel_producto_publicacion from '@/components/imagenes/carrusel-producto-publicar';
 import ContenedorCarruselYBoton from '@/components/botones/carrusel-y-boton.';
+import categorias from '@/data/categories';
 
 export default function Update_product() {
+
+    categorias
+
     return (
         <div className="container text-start">
 
@@ -17,7 +21,7 @@ export default function Update_product() {
                 <div className="col">
 
                     <div className="row">
-                        <ContenedorCarruselYBoton/>
+                        <ContenedorCarruselYBoton />
                     </div>
                 </div>
 
@@ -40,12 +44,14 @@ export default function Update_product() {
 
                     <div className="row mb-3">
                         <select className="form-select" aria-label="Default select example">
-                            <option value="" disabled selected>
+                            <option value="" disabled>
                                 Cambia de categoría
                             </option>
-                            <option value="1">Electrónica</option>
-                            <option value="2">Aseo</option>
-                            <option value="3">Comida</option>
+                            {categorias.map((categoria) => (
+                                <option key={categoria.id} value={categoria.id}>
+                                    {categoria.nombre}
+                                </option>
+                            ))}
                         </select>
                     </div>
                     <div className="row">
