@@ -1,7 +1,6 @@
 import CategoriaModel from "@/model/categoria";
-import { categoria} from "@/types/categoria"
-import { CategoriaDTO } from "@/types/dtos/categoria/categoriadto";
 import { CrearCategoriaDTO } from "@/types/dtos/categoria/crearcategoriadto";
+import { modificarCategoriaDTO } from "@/types/dtos/categoria/modificarcategoriadto";
 
 
 class CategoriaService{
@@ -11,11 +10,11 @@ class CategoriaService{
         return await categoria.save();
     }
 
-    static async modificarCategoria(idcategoria:  string, nombre: string){
-        return await CategoriaModel.findByIdAndUpdate(idcategoria, {nombre: nombre}, {new: true});
+    static async modificarCategoria(id: string, data: modificarCategoriaDTO){
+        return await CategoriaModel.findByIdAndUpdate(id, {nombre: data.nombre,  imagen: data.imagen}, {new: true});
     }
 
-    static async eliminarCategoria(idcategoria:  string, nombre: string){
+    static async eliminarCategoria(idcategoria:  string){
         return await CategoriaModel.findByIdAndDelete(idcategoria);
     }
 
