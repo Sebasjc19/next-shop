@@ -15,7 +15,7 @@ export default function Categories_home() {
             <div className="row row-cols-4 row-cols-md-4 g-4">
                 {productos.map((producto) => (
                     <div className="col" key={producto.id}>
-                        <ProductoCategoria imagen={producto.imagen} nombre={producto.nombre} precio={producto.precio}/>
+                        <ProductoCategoria imagen={producto.imagen} nombre={producto.nombre} precio={producto.precioVenta}/>
                     </div>
                 ))}
             </div>
