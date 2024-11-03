@@ -3,7 +3,7 @@
 interface ProductoPerfilProps {
     imagen: string;
     nombre: string;
-    precio: string;
+    precio: number;
     fecha: string;
 }
 
@@ -17,7 +17,7 @@ export default function Producto_perfil({imagen, nombre, precio, fecha }: Produc
                 <div className="col-md-8 text-start">
                     <div className="card-body">
                         <h5 className="card-title">{nombre}</h5>
-                        <p className="fs-6">{precio}</p>
+                        <p className="fs-6">${precio}</p>
                         <p className="fs-6">{fecha}</p>
                     </div>
                 </div>
