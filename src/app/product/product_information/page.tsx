@@ -2,16 +2,24 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Carrusel_producto from '@/components/imagenes/carrusel-producto';
+import Carrusel_producto from '@/components/imagenes/carrusel-producto-publicar';
+import Carrusel_producto_informacion from '@/components/imagenes/carrusel-producto-info';
 
 export default function Product_Information() {
+
+    const images = [
+        'https://variety.com/wp-content/uploads/2024/09/The-Wild-Robot.jpg?w=1000&h=563&crop=1',
+        'https://www.boningtontheatre.co.uk/wp-content/uploads/2024/09/the-wild-robot-668ec3182e643.jpg',
+        'https://mundocine.es/wp-content/uploads/2024/09/TheWildRobot_Fotopelicula_31454.jpg'
+    ];
+
     return (
         <div className="container text-center">
             <div className="row align-items-start">
                 {/*Columna 1*/}
                 <div className="col">
                     <div className="row">
-                        <Carrusel_producto/>
+                        <Carrusel_producto_informacion/>
                     </div>
                     <div className="row text-start">
                         <p className="fs-5 fw-medium">Calificación: 5</p>

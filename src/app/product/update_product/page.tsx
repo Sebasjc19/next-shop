@@ -4,8 +4,9 @@ import React, { useState } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import Carrusel_producto from '@/components/imagenes/carrusel-producto';
 import Boton_agregar_imagen from '@/components/botones/boton-agregar-imagen';
+import Carrusel_producto_publicacion from '@/components/imagenes/carrusel-producto-publicar';
+import ContenedorCarruselYBoton from '@/components/botones/carrusel-y-boton.';
 
 export default function Update_product() {
     return (
@@ -16,8 +17,7 @@ export default function Update_product() {
                 <div className="col">
 
                     <div className="row">
-                        <Carrusel_producto/>
-                        <Boton_agregar_imagen/>
+                        <ContenedorCarruselYBoton/>
                     </div>
                 </div>
 

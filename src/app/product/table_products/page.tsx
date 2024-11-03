@@ -12,7 +12,7 @@ export default function Table_products() {
                         <p className="text-center fs-1 fw-bold">Mis productos</p>
                     </div>
                     <div className="col text-end">
-                        <Link href="/product/publish_product" passHref><button type="button" className="btn btn-success btn-lg">Agregar producto</button></Link>
+                    <Link href="/product/publish_product" passHref><button type="button" className="btn btn-success btn-lg">Agregar producto</button></Link>
                     </div>
                 </div>
                 <div className="row">
