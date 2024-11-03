@@ -22,20 +22,25 @@ export default function Header() {
 
 
                 <div className="round">
+                    <Link href="/" passHref>
                     <Image
                         src="/next-shop.jpeg"
                         width={30}
                         height={30}
                         alt="Icono de next-shop"
                     />
+                    </Link>
+                    
+                                       
                 </div>
+                
 
                 <div className="d-flex align-items-center justify-content-center ">
                     <form className="me-2" role="search">
                         <input
                             type="search"
                             className="form-control"
-                            placeholder="Buscar un negocio..."
+                            placeholder="Buscar un producto..."
                             aria-label="Search"
                             style={{ width: '500px' }}
                         />

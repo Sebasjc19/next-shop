@@ -7,8 +7,6 @@ import Link from "next/link";
 
 export default function Login() {
 
-    
-
     // Definimos los estados para email y password
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
