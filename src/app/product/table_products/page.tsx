@@ -4,6 +4,24 @@ import Fila_producto from "@/components/fila-producto"
 import Link from "next/link"
 
 export default function Table_products() {
+
+    // Información de los productos
+    const productos = [
+        {
+            id: '1',
+            nombre: 'Pokemon Rojo Fuego',
+            precio: '$10.00',
+            stock:12
+        },
+        {
+            id:'2',
+            nombre: 'Nintendo Switch',
+            precio: '$15.00',
+            stock:20
+        },
+        // Agrega más productos aquí
+    ];
+
     return (
         <div className="container text-center">
             <div className="row ">
@@ -12,7 +30,7 @@ export default function Table_products() {
                         <p className="text-center fs-1 fw-bold">Mis productos</p>
                     </div>
                     <div className="col text-end">
-                    <Link href="/product/publish_product" passHref><button type="button" className="btn btn-success btn-lg">Agregar producto</button></Link>
+                        <Link href="/product/publish_product" passHref><button type="button" className="btn btn-success btn-lg">Agregar producto</button></Link>
                     </div>
                 </div>
                 <div className="row">
@@ -27,9 +45,15 @@ export default function Table_products() {
                             </tr>
                         </thead>
                         <tbody>
-                            <Fila_producto/>
-                            <Fila_producto/>
-                            <Fila_producto/>
+                            {productos.map((producto, index) => (
+                                <Fila_producto
+                                    key={index}
+                                    id={producto.id}
+                                    nombre={producto.nombre}
+                                    precio={producto.precio}
+                                    stock={producto.stock}
+                                />
+                            ))}
                         </tbody>
                     </table>
                 </div>
