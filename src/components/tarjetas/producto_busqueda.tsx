@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 
-interface CategoriaHomeProps {
+interface ProductoBusquedaProps {
     id: number;
     imagen: string;
     nombre: string;
     precio: number;
 }
 
-export default function ProductoCategoria({ id, imagen, nombre, precio }: CategoriaHomeProps) {
+export default function ProductoBusqueda({ id, imagen, nombre, precio }: ProductoBusquedaProps) {
     return (
-        <div className="card mb-3" style={{ maxWidth: "540px;" }}>
+        <div className="card mb-3" style={{ maxWidth: "540px" }}>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={imagen} className="img-fluid rounded-start" alt="..." />

@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Carrusel_producto from '@/components/imagenes/carrusel-producto-publicar';
 import Carrusel_producto_informacion from '@/components/imagenes/carrusel-producto-info';
+import productos from '@/data/products';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function Product_Information() {
 
@@ -13,13 +16,14 @@ export default function Product_Information() {
         'https://mundocine.es/wp-content/uploads/2024/09/TheWildRobot_Fotopelicula_31454.jpg'
     ];
 
+    // Aquí va el resto de tu lógica y JSX
     return (
         <div className="container text-center">
             <div className="row align-items-start">
                 {/*Columna 1*/}
                 <div className="col">
                     <div className="row">
-                        <Carrusel_producto_informacion/>
+                        <Carrusel_producto_informacion />
                     </div>
                     <div className="row text-start">
                         <p className="fs-5 fw-medium">Calificación: 5</p>
@@ -31,10 +35,10 @@ export default function Product_Information() {
                 {/*Columna 2*/}
                 <div className="col text-start">
                     <div className="row">
-                        <p className="fs-1 fw-bold text-break">Nombre del producto</p>
+                        <p className="fs-1 fw-bold text-break">n</p>
                     </div>
                     <div className="row">
-                        <p className="fs-4">$3400</p>
+                        <p className="fs-4">a</p>
                     </div>
                     <div className="row">
                         <div className="container mt-4 mb-3">

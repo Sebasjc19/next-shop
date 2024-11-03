@@ -37,7 +37,7 @@ export default function Table_products() {
                                     key={index}
                                     id={producto.id}
                                     nombre={producto.nombre}
-                                    precio={producto.precio}
+                                    precio={producto.precioVenta}
                                     cantidad={producto.cantidad}
                                 />
                             ))}
