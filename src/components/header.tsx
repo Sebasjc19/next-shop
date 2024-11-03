@@ -40,7 +40,7 @@ export default function Header() {
                         <input
                             type="search"
                             className="form-control"
-                            placeholder="Buscar un negocio..."
+                            placeholder="Buscar un producto..."
                             aria-label="Search"
                             style={{ width: '500px' }}
                         />
