@@ -20,6 +20,30 @@ export default function Table_products() {
             stock:20
         },
         // Agrega más productos aquí
+        {
+            id: '3',
+            nombre: 'The Legend of Zelda: Breath of the Wild',
+            precio: '$25.00',
+            stock: 8
+        },
+        {
+            id: '4',
+            nombre: 'Super Mario Odyssey',
+            precio: '$20.00',
+            stock: 15
+        },
+        {
+            id: '5',
+            nombre: 'PlayStation 5',
+            precio: '$499.00',
+            stock: 5
+        },
+        {
+            id: '6',
+            nombre: 'Xbox Series X',
+            precio: '$499.00',
+            stock: 7
+        },
     ];
 
     return (
