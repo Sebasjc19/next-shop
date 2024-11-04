@@ -11,12 +11,12 @@ interface ProductoBusquedaProps {
 
 export default function ProductoBusqueda({ id, imagen, nombre, precio }: ProductoBusquedaProps) {
     return (
-        <div className="card mb-3" style={{ maxWidth: "540px" }}>
+        <div className="card mb-3" style={{ maxWidth: "540px", height: "200px" }}>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img src={imagen} className="img-fluid rounded-start" alt="..." />
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-8 text-start">
                     <div className="card-body">
                         <h5 className="card-title">{nombre}</h5>
                         <p className="card-text">{precio}</p>

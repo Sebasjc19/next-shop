@@ -35,10 +35,10 @@ export default function Product_Information() {
                 {/*Columna 2*/}
                 <div className="col text-start">
                     <div className="row">
-                        <p className="fs-1 fw-bold text-break">n</p>
+                        <p className="fs-1 fw-bold text-break">Nombre del producto</p>
                     </div>
                     <div className="row">
-                        <p className="fs-4">a</p>
+                        <p className="fs-4">$precio</p>
                     </div>
                     <div className="row">
                         <div className="container mt-4 mb-3">

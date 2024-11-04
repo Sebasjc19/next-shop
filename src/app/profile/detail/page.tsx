@@ -10,11 +10,15 @@ export default function Detail() {
 
     return (
         <div className="container text-center">
+            <section className="py-3 text-center container"> {/* Sección de encabezado */}
+                <div className="row">
+                    <div className="col-lg-6 col-md-8 mx-auto">
+                        <h1 className="fw-light">Mi perfil</h1>
+                        <p className="lead text-body-secondary">Gestiona tus compras desde aquí</p>
+                    </div>
+                </div>
+            </section>
             {/*Fila 1*/}
-            <div className="row">
-                <p className="fs-1 fw-bold">Mi perfil</p>
-            </div>
-            {/*Fila 2*/}
             <div className="row">
                 {/*Columna 1*/}
                 <div className="col text-start">
@@ -33,7 +37,7 @@ export default function Detail() {
                                     key={index}
                                     imagen={producto.imagen}
                                     nombre={producto.nombre}
-                                    precio={producto.precio}
+                                    precio={producto.precioVenta}
                                     fecha={"fecha pendiente de organizar"}
                                 />
                             ))}

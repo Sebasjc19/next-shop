@@ -19,7 +19,7 @@ export default function Categories_home() {
 
             <div className="album py-5 bg-body-tertiary"> {/* Sección para los productos */}
                 <div className="container">
-                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> {/* Organiza los productos en columnas */}
+                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3"> {/* Organiza los productos en columnas */}
                         {productos.map((producto) => (
                             <div className="col" key={producto.id}>
                                 <ProductoCategoria 
