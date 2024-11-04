@@ -9,6 +9,7 @@ interface Detalle {
 
 
 interface Factura extends Document {
+    _id: String;
     cliente: mongoose.Types.ObjectId;
     detalles: Detalle[];
 }

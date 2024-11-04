@@ -1,4 +1,4 @@
-export interface modificarCategoriaDTO {
+export interface ModificarCategoriaDTO {
     nombre: string;
     imagen: string;
 }
