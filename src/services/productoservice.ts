@@ -27,11 +27,15 @@ class ProductoServicio{
     }
 
     static async eliminarProducto(id: string){
-        return await ProductoModel.findByIdAndDelete(id)
+        return await ProductoModel.findByIdAndDelete(id);
     }
   
     static async obtenerProducto(id: string){
-        return await ProductoModel.findById(id)
+        const producto = await ProductoModel.findById(id);
+        if (!producto) {
+            throw new Error("Producto no encontrado");
+        }
+        return producto;
     }
 
     static async obtenerProductos(){;
