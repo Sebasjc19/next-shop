@@ -9,7 +9,7 @@ import ProductoCompra from "@/components/tarjetas/producto-compra"
 
 export default function CofirmacionCompra() {
 
-    ubicaciones
+    const ubicacionSeleccionada = ubicaciones[0];
     // Suponiendo que deseas mostrar el primer producto del arreglo
     const productoSeleccionado = productos[0]; // Cambia el índice para seleccionar otro producto
     // va de 0 a 7, porque son 8 productos
@@ -29,6 +29,7 @@ export default function CofirmacionCompra() {
                             imagen={productoSeleccionado.imagen}
                             precio={productoSeleccionado.precioVenta}
                             descripcion={productoSeleccionado.descripcion}
+                            direccion={ubicacionSeleccionada.direccion}
                         />
                     </div>
                 </div>

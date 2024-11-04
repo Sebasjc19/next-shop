@@ -9,26 +9,31 @@ interface ProductoCompraProps {
     imagen: string;
     precio: number;
     descripcion: string;
+    direccion: string;
 }
 
-export default function ProductoCompra({ nombre, imagen, precio, descripcion }: ProductoCompraProps) {
+export default function ProductoCompra({ nombre, imagen, precio, descripcion, direccion }: ProductoCompraProps) {
     return (
-        <div className="container text-start d-flex justify-content-center"> {/* Centrar la tarjeta */}
-            <div className="card" style={{ width: "18rem" }}>
+        <div className="container d-flex flex-column align-items-center"> {/* Centrar tarjeta y botón en columna */}
+            <div className="card mb-3" style={{ width: "18rem" }}>
                 <img src={imagen} className="card-img-top" alt={nombre} />
                 <div className="card-body">
-                    <h5 className="card-title">{nombre}</h5>
+                    <h5 className="card-title">{direccion}</h5>
+                    <hr className="my-2" />
+                    <p className="card-text">{nombre}</p>
                     <hr className="my-2" />
                     <p className="card-text">{descripcion}</p>
                 </div>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item">Precio: ${precio}</li>
                 </ul>
-                <div className="card-body d-flex justify-content-center mt-3"> {/* Centrar el botón */}
-                    <Link href="/compra/confirmacion_compra" passHref>
-                        <button className="btn btn-primary" type="submit">Confirmar compra</button>
-                    </Link>
-                </div>
+            </div>
+            {/* Botón debajo de la tarjeta */}
+            <div className="mt-3 d-flex justify-content-center">
+                <button className="btn btn-primary me-2">Confirmar compra</button>
+                <Link href="/product/product_information" passHref>
+                    <button className="btn btn-danger">Cancelar</button>
+                </Link>
             </div>
         </div>
     );
