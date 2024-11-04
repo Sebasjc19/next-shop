@@ -7,6 +7,7 @@ import Carrusel_producto_informacion from '@/components/imagenes/carrusel-produc
 import productos from '@/data/products';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Product_Information() {
 
@@ -99,7 +100,9 @@ export default function Product_Information() {
                             <p className="fw-bolder fs-5">Subtotal: $60000</p>
                         </div>
                         <div className="row">
-                            <button type="button" className="btn btn-primary mb-2">Comprar ahora</button>
+                            <Link href="/compra/seleccion_ubicacion" passHref>
+                                <button type="button" className="btn btn-primary mb-2">Comprar ahora</button>
+                            </Link>
                             <button type="button" className="btn btn-outline-dark">Añadir al carrito</button>
                         </div>
                     </div>
