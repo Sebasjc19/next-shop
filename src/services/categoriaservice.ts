@@ -9,7 +9,7 @@ class CategoriaService{
         const categoria = new CategoriaModel(data);
         return await categoria.save();
     }
-
+    
     static async modificarCategoria(id: string, data: ModificarCategoriaDTO){
         return await CategoriaModel.findByIdAndUpdate(id, {nombre: data.nombre,  imagen: data.imagen}, {new: true});
     }
