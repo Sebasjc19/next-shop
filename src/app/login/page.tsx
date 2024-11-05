@@ -10,9 +10,34 @@ export default function Login() {
     // Definimos los estados para email y password
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState<string | null>(null); // Estado para manejar errores
 
-    function handleLogin(event: FormEvent<HTMLFormElement>): void {
-        console.log(email+" xD "+password)
+    async function handleLogin(event: FormEvent<HTMLFormElement>): Promise<void> {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+
+        try {
+            const response = await fetch("/api/auth", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Error al iniciar sesión"); // Lanza un error si la respuesta no es correcta
+            }
+
+            const data = await response.json(); // Analiza la respuesta como JSON
+
+            // Almacena el token en el almacenamiento local
+            localStorage.setItem("token", data.token);
+
+            // Redirecciona al usuario a la página de inicio o donde desees
+            window.location.href = "/"; // Cambia esto a la ruta que desees
+        } catch (error) {
+            setError(error.message); // Muestra el error si ocurre
+        }
     }
 
 
