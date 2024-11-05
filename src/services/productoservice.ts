@@ -23,7 +23,7 @@ class ProductoServicio{
         if (data.precioCompra<=0 || data.precioCompra<=0) {
             throw new Error("Precio no valido")
         }
-        return  await ProductoModel.findByIdAndUpdate(id, data,  {new: true});
+        return await ProductoModel.findByIdAndUpdate(id, data,  {new: true});
     }
 
     static async eliminarProducto(id: string){

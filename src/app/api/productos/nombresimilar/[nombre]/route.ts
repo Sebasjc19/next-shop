@@ -6,7 +6,7 @@ import connect from "@/lib/db";
 
 /*
 * Función que conecta con el backend para obtener productos mediante que tenga un nombre similar
-*  GET /api/productos/:nombre
+*  GET /api/productos/nombresimilar/:nombre
 */
 export async function GET(request: NextRequest, { params }: { params: { nombre: string } }) {
     await connect();
