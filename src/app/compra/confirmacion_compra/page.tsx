@@ -17,7 +17,7 @@ export default function CofirmacionCompra() {
 
     return (
         <main>
-            <EncabezadoTitulo
+            <EncabezadoTitulo     // Cambio solo visual
                 mensajePrincipal={"Detalles de tu pedido"}
                 mensajeSecundario={"Solo unos detalles y tu compra estará lista"}
             />
