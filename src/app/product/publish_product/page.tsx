@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from 'react';
 import mongoose, { Schema, model, Model } from 'mongoose';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,6 +24,42 @@ export default function Publish_product() {
 
 
     categorias
+
+    const guardarProducto = async () => {
+        // Datos "quemados" del producto
+        const datosProducto = {
+            nombre: "Producto de prueba",
+            descripcion: "Este es un producto de prueba",
+            categoria: "1",  // Cambiar por una categoría válida
+            precioCompra: 100,
+            precioVenta: 150,
+            cantidad: 10,
+            imagen: "https://mundocine.es/wp-content/uploads/2024/09/TheWildRobot_Fotopelicula_31454.jpg",  // Nombre de la imagen
+        };
+
+        try {
+            // Hacer la solicitud POST a la API de Next.js
+            const response = await fetch('/api/productos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(datosProducto), // Enviar los datos del producto
+            });
+
+            // Verificar si la respuesta fue exitosa
+            if (response.ok) {
+                const producto = await response.json();
+                console.log('Producto creado:', producto);
+                alert("adafasf");
+            } else {
+                const error = await response.json();
+                console.error('Error al crear el producto:', error);
+            }
+        } catch (error) {
+            console.error("Error al crear el producto:", error);
+        }
+    };
 
     return (
         <div className="container text-start">
@@ -68,7 +105,7 @@ export default function Publish_product() {
                             <div className="row">
                                 <div className="col d-flex justify-content-start">
                                     <button type="button" className="btn btn-danger me-2">Cancelar</button>
-                                    <button type="button" className="btn btn-success" >Guardar</button>
+                                    <button type="button" className="btn btn-success" onClick={guardarProducto}>Guardar</button>
                                 </div>
                             </div>
                         </div>
