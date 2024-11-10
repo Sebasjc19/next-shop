@@ -16,6 +16,11 @@ class ProductoServicio{
         return await producto.save();
     }
 
+    static async crearProducto2(data: CrearProductoDTO){
+        const producto = new ProductoModel(data);
+        return await producto.save();
+    }
+
     static async modificarProducto(id: string, data: modificarProductoDTO){
         if (data.cantidad == null || data.categoria == null || data.imagen == null  || data.nombre == null || data.precioCompra == null || data.precioVenta == null) {
             throw new Error("Uno o más atributos nulos");

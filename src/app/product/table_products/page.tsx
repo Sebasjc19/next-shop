@@ -1,6 +1,6 @@
 "use client"
 
-import productos from "@/data/products"
+import productos from "@/data/productos"
 import Fila_producto from "@/components/fila-producto"
 import Link from "next/link"
 

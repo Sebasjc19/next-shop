@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { useEffect } from 'react';
 import Boton_agregar_imagen from './boton-agregar-imagen';
 import Carrusel_producto_publicacion from '../imagenes/carrusel-producto-publicar';
 

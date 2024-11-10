@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Carrusel_producto from '@/components/imagenes/carrusel-producto-publicar';
 import Carrusel_producto_informacion from '@/components/imagenes/carrusel-producto-info';
-import productos from '@/data/products';
+import productos from '@/data/productos';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Link from 'next/link';
