@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 interface CategoriaHomeProps {
-    id: number;
+    id: string;
     imagen: string;
     nombre: string;
     precio: number;

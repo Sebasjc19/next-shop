@@ -45,9 +45,10 @@ export default function Categories_home() {
             <div className="album py-5 bg-body-tertiary"> {/* Sección para las categorías */}
                 <div className="container">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3"> {/* Organiza las categorías en columnas */}
-                        {categorias.map((categoria, index) => (
-                            <div className="col" key={index}> {/* Usando el índice como clave */}
+                        {categorias.map((categoria) => (
+                            <div className="col" key={categoria.id ?? `${categoria.nombre}-${categoria.imagen}`}> {/*se verifica que sea unica cada categoria*/}
                                 <CategoriaHome
+                                    id={categoria.id}
                                     imagen={categoria.imagen}
                                     nombre={categoria.nombre}
                                 />

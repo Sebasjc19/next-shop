@@ -1,38 +1,47 @@
 "use client";
 
 import ProductoCategoria from '@/components/tarjetas/producto-categoria';
-import productos from '@/data/productos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-export default function Categories_home() {
+// Definimos el tipo de los productos
+interface Producto {
+    id: string;
+    imagen: string;
+    nombre: string;
+    precioVenta: number;
+}
 
-    // Estado para almacenar los productos
-    const [productos, setProductos] = useState<any[]>([]);
+export default function Producto_categoria() {
 
-    // Usar useEffect para hacer la llamada a la API cuando el componente se monte
+    const router = useRouter();
+    const { id } = router.query; // Obtén el id de la categoría desde la URL
+    const [productos, setProductos] = useState<Producto[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
     useEffect(() => {
-        const obtenerProductos = async () => {
-            try {
-                // Hacer la petición GET a la API para obtener los productos
-                const response = await fetch('/api/productos');
+        if (!id) return; // Si no hay id, no hacer la llamada a la API
 
-                // Verificar si la respuesta es exitosa
-                if (response.ok) {
-                    const data = await response.json();
-                    setProductos(data); // Almacenar la respuesta en el estado
-                } else {
-                    console.error('Error al obtener productos:', response.status);
+        const fetchProductos = async () => {
+            try {
+                const res = await fetch(`/api/productos/categoria/${id}`);
+                if (!res.ok) {
+                    throw new Error("Error al obtener productos");
                 }
-            } catch (error) {
-                console.error('Error al hacer la petición:', error);
+                const data = await res.json();
+                setProductos(data);
+            } catch (err) {
+                setError("Hubo un problema al cargar los productos.");
+            } finally {
+                setLoading(false);
             }
         };
 
-        obtenerProductos(); // Llamar la función para obtener los productos
-    }, []); // El arreglo vacío asegura que solo se ejecute una vez cuando el componente se monte
-
+        fetchProductos();
+    }, [id]);
 
     return (
         <main>
@@ -48,8 +57,8 @@ export default function Categories_home() {
             <div className="album py-5 bg-body-tertiary"> {/* Sección para los productos */}
                 <div className="container">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3"> {/* Organiza los productos en columnas */}
-                        {productos.map((producto, index) => (
-                            <div className="col" key={index}>
+                        {productos.map((producto) => (
+                            <div className="col" key={producto.id}>
                                 <ProductoCategoria
                                     id={producto.id}
                                     imagen={producto.imagen}
