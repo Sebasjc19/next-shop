@@ -1,11 +1,14 @@
 "use client";
 
 import CategoriaHome from '@/components/tarjetas/categoria-home';
-import categorias from '@/data/categories';
+import categorias from '@/data/categorias';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default function Categories_home() {
+
+    categorias
+    
     return (
         <main>
             <section className="py-3 text-center container"> {/* Sección de encabezado */}

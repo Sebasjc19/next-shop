@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Boton_agregar_imagen from '@/components/botones/boton-agregar-imagen';
 import Carrusel_producto_publicacion from '@/components/imagenes/carrusel-producto-publicar';
-import ContenedorCarruselYBoton from '@/components/botones/carrusel-y-boton.';
-import categorias from '@/data/categories';
+import ContenedorCarruselYBoton from '@/components/botones/carrusel-y-boton';
+import categorias from '@/data/categorias';
 
 export default function Update_product() {
 
