@@ -3,11 +3,11 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import AuthService from '../services/auth/AuthService';
+//import AuthService from '../services/auth/AuthService';
 
 export default function Header() {
 
-    const [authStatus, setAuthStatus] = useState(AuthService.isAuthenticated());
+    //const [authStatus, setAuthStatus] = useState(AuthService.isAuthenticated());
 
     // Estado para controlar el valor seleccionado
     const [categoria, setCategoria] = useState("");
@@ -49,7 +49,7 @@ export default function Header() {
 
                 <div className="flex-shrink-0 dropdown">
                     <div className="d-flex">
-                        {!authStatus ? (
+                        {!true ? (
                             <>
                                 <Link href="/login" passHref><button className="btn btn-primary me-2 ">Iniciar sesión</button></Link>
                                 <Link href="/register" passHref><button className="btn btn-primary me-2 ">Registrarse</button></Link>
