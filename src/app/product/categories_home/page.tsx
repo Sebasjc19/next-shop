@@ -1,14 +1,35 @@
-"use client";
+"use client"; // Para indicar que este componente es del lado del cliente
 
+import React, { useEffect, useState } from "react";
 import CategoriaHome from '@/components/tarjetas/categoria-home';
-import categorias from '@/data/categorias';
+import { cargarCategorias, Categoria } from '@/data/categorias';  // Asumiendo que esta es la función que carga las categorías
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default function Categories_home() {
+    const [categorias, setCategorias] = useState<Categoria[]>([]);  // Estado para almacenar las categorías
+    const [loading, setLoading] = useState<boolean>(true);  // Estado de carga
+    const [error, setError] = useState<string | null>(null);  // Estado de error
 
-    categorias
-    
+    // Cargar las categorías cuando el componente se monta
+    useEffect(() => {
+        const fetchCategorias = async () => {
+            try {
+                const categoriasData = await cargarCategorias();  // Obtener las categorías
+                setCategorias(categoriasData);  // Actualizar el estado con las categorías
+            } catch (err) {
+                setError('Error al cargar las categorías');
+            } finally {
+                setLoading(false);  // Marcar como no cargando
+            }
+        };
+
+        fetchCategorias();
+    }, []);  // Solo se ejecuta una vez al montar el componente
+
+    if (loading) return <p>Cargando categorías...</p>;
+    if (error) return <p>{error}</p>;
+
     return (
         <main>
             <section className="py-3 text-center container"> {/* Sección de encabezado */}

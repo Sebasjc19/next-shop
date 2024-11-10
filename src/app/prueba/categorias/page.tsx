@@ -1,11 +1,11 @@
 "use client";
 
-import { probarCategorias } from '@/data/prueba';
+import { crearCategorias } from '@/data/categorias';
 import React from 'react';
 
 export default function Prueba_categoria() {
     const handleClick = () => {
-        probarCategorias();
+        crearCategorias();
         alert("¡Botón presionado!");
     };
 

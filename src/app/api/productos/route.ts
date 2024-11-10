@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const data = await request.json();
 
     try {
-        const producto = await ProductoServicio.crearProducto2(data);
+        const producto = await ProductoServicio.crearProducto(data);
         return NextResponse.json(producto);
     } catch (error: unknown) {
         if (error instanceof Error) {
