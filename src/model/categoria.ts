@@ -7,8 +7,8 @@ interface Categoria extends Document {
 
 const categoriaSchema = new Schema<Categoria>({
     nombre: { type: String, required: true },
-    imagen: { type: String, required: true },
+    imagen: { type: String, required: true }
 });
 
-const CategoriaModel: Model<Categoria> = mongoose.models.Categoria || mongoose.model("Categoria", categoriaSchema);
+const CategoriaModel: Model<Categoria> = mongoose.models.Categoria || mongoose.model<Categoria>("Categoria", categoriaSchema);
 export default CategoriaModel;

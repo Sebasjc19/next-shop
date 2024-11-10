@@ -8,7 +8,7 @@ import connect from "@/lib/db";
 *  POST /api/categorias
 Crea una categoria
  */
-export async function PUT(request: NextRequest) {
+export async function POST(request: NextRequest) {
     await connect();
     const data = await request.json();
 

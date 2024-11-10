@@ -12,7 +12,9 @@ async function connect() {
     return;
   }
 
-  return mongoose.connect(MONGODB_URI);
+  return mongoose.connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 20000, // Tiempo de espera para selección del servidor en ms (20 segundos)
+  });
 }
 
 export default connect;
