@@ -46,9 +46,9 @@ export default function Categories_home() {
                 <div className="container">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3"> {/* Organiza las categorías en columnas */}
                         {categorias.map((categoria) => (
-                            <div className="col" key={categoria.id ?? `${categoria.nombre}-${categoria.imagen}`}> {/*se verifica que sea unica cada categoria*/}
+                            <div className="col" key={categoria._id}> {/*se verifica que sea unica cada categoria*/}
                                 <CategoriaHome
-                                    id={categoria.id}
+                                    id={categoria._id}
                                     imagen={categoria.imagen}
                                     nombre={categoria.nombre}
                                 />

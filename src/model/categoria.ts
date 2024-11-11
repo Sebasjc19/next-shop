@@ -1,6 +1,7 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
 interface Categoria extends Document {
+    _id: string;
     nombre: string;
     imagen: string;
 }
@@ -10,5 +11,5 @@ const categoriaSchema = new Schema<Categoria>({
     imagen: { type: String, required: true }
 });
 
-const CategoriaModel: Model<Categoria> = mongoose.models.Categoria || mongoose.model<Categoria>("Categoria", categoriaSchema);
+const CategoriaModel: Model<Categoria> = mongoose.models.Categoria || mongoose.model("Categoria", categoriaSchema);
 export default CategoriaModel;
