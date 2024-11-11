@@ -20,7 +20,7 @@ export default function ProductoCategoria({ id, imagen, nombre, precio }: Catego
                     <div className="card-body">
                         <h5 className="card-title">{nombre}</h5>
                         <p className="card-text">{precio}</p>
-                        <Link href={`/product/product_information?id=${id}`} passHref>
+                        <Link href={`/product/product_information/${id}`} passHref>
                             <button className="btn btn-primary">Ver producto</button>
                         </Link>
                     </div>

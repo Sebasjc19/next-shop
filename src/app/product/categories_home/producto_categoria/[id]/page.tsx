@@ -6,18 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { CategoriaDTO } from "@/types/dtos/categoria/categoriadto";
 import CategoriaService from "@/services/categoriaservice";
-
-// Se define el tipo de los productos
-interface Producto {
-    id: string;
-    imagen: string;
-    nombre: string;
-    precioVenta: number;
-}
-
+import { ProductoDTO } from "@/types/dtos/productos/productodto";
 
 export default function ProductoCategoriaPage({ params }: { params: Promise<{ id: string }> }) {
-    const [productos, setProductos] = useState<Producto[]>([]);
+    const [productos, setProductos] = useState<ProductoDTO[]>([]);
     const [categoria, setCategoria] = useState<CategoriaDTO | null>(null); // Estado para almacenar la categoría
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -101,9 +93,9 @@ export default function ProductoCategoriaPage({ params }: { params: Promise<{ id
                 <div className="container">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                         {productos.map((producto) => (
-                            <div className="col" key={producto.id}>
+                            <div className="col" key={producto._id}>
                                 <ProductoCategoria
-                                    id={producto.id}
+                                    id={producto._id ?? ""}
                                     imagen={producto.imagen}
                                     nombre={producto.nombre}
                                     precio={producto.precioVenta}

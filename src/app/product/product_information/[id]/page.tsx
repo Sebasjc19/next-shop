@@ -6,25 +6,69 @@ import Carrusel_producto from '@/components/imagenes/carrusel-producto-publicar'
 import Carrusel_producto_informacion from '@/components/imagenes/carrusel-producto-info';
 import productos from '@/data/productos';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { ProductoDTO } from '@/types/dtos/productos/productodto';
 
-export default function Product_Information() {
+export default function Product_Information({ params }: { params: { id: string } }) {
 
-    const images = [
-        'https://variety.com/wp-content/uploads/2024/09/The-Wild-Robot.jpg?w=1000&h=563&crop=1',
-        'https://www.boningtontheatre.co.uk/wp-content/uploads/2024/09/the-wild-robot-668ec3182e643.jpg',
-        'https://mundocine.es/wp-content/uploads/2024/09/TheWildRobot_Fotopelicula_31454.jpg'
-    ];
 
-    // Aquí va el resto de tu lógica y JSX
+    const [producto, setProducto] = useState<ProductoDTO | null>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    // Se desenrolla la promesa de params para evitar problemas
+    const [resolvedParams, setResolvedParams] = useState<{ id: string } | null>(null);
+
+    useEffect(() => {
+        const getParams = async () => {
+            const resolved = await params; // Desenvuelves la promesa de params
+            setResolvedParams(resolved); // Estableces el id
+        };
+
+        getParams();
+    }, [params]);
+
+    // Se accede al id sólo después de que haya sido resuelto
+    const id = resolvedParams?.id;
+
+    // Obtención de producto a partir del ID
+    useEffect(() => {
+        if (!id) return;
+
+        const fetchProducto = async () => {
+            try {
+                const res = await fetch(`/api/productos/${id}`);
+                if (!res.ok) {
+                    throw new Error("Error al obtener el producto");
+                }
+                const data: ProductoDTO = await res.json();
+                setProducto(data);
+            } catch (err) {
+                setError("Hubo un problema al cargar el producto.");
+            }
+        };
+
+        fetchProducto();
+    }, [id]);
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
+    if (!producto) {
+        return <p>Cargando producto...</p>;
+    }
+
+
+    //----------------------Estructura del page---------------------------------
     return (
         <div className="container text-center">
             <div className="row align-items-start">
                 {/*Columna 1*/}
                 <div className="col">
                     <div className="row">
-                        <Carrusel_producto_informacion />
+                        {/*Aquí va el carrusel*/}
+                        <img src={producto.imagen} className="rounded float-start" alt="..."></img>
                     </div>
                     <div className="row text-start">
                         <p className="fs-5 fw-medium">Calificación: 5</p>
@@ -36,10 +80,10 @@ export default function Product_Information() {
                 {/*Columna 2*/}
                 <div className="col text-start">
                     <div className="row">
-                        <p className="fs-1 fw-bold text-break">Nombre del producto</p>
+                        <p className="fs-1 fw-bold text-break">{producto.nombre}</p>
                     </div>
                     <div className="row">
-                        <p className="fs-4">$precio</p>
+                        <p className="fs-4">${producto.precioVenta}</p>
                     </div>
                     <div className="row">
                         <div className="container mt-4 mb-3">
@@ -73,7 +117,7 @@ export default function Product_Information() {
                                 </h2>
                                 <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                     <div className="accordion-body">
-                                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        {producto.descripcion}
                                     </div>
                                 </div>
                             </div>
