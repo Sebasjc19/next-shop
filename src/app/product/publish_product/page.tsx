@@ -8,11 +8,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Boton_agregar_imagen from '@/components/botones/boton-agregar-imagen';
 import Carrusel_producto_publicacion from '@/components/imagenes/carrusel-producto-publicar';
 import ContenedorCarruselYBoton from '@/components/botones/carrusel-y-boton';
-import categorias from '@/data/categorias';
 import AlertaExito from '@/components/alertas/exito';
 import ProductoServicio from '@/services/productoservice';
 
 export default function Publish_product() {
+    const [categorias, setCategorias] = useState<any[]>([]); // inicialización con un array vacío
+
+    // Se definen los datos que van a usarse para crear un producto
     const [nombre, setNombre] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [categoria, setCategoria] = useState('');
@@ -20,17 +22,34 @@ export default function Publish_product() {
     const [precioVenta, setPrecioVenta] = useState(0);
     const [cantidad, setCantidad] = useState(0);
     const [imagen, setImagen] = useState('');
-    const [alertaExito, setAlertaExito] = useState(false);  // Estado para la alerta de éxito
 
+    // Se obtienen las categorías de la API
+    useEffect(() => {
+        const obtenerCategorias = async () => {
+            try {
+                // Hacer la petición GET a la API para obtener las categorías
+                const response = await fetch('/api/categorias');
 
-    categorias
+                // Verificar si la respuesta es exitosa
+                if (response.ok) {
+                    const data = await response.json();
+                    setCategorias(data); // Almacenar la respuesta en el estado
+                } else {
+                    console.error('Error al obtener categorías:', response.status);
+                }
+            } catch (error) {
+                console.error('Error al hacer la petición:', error);
+            }
+        };
+        obtenerCategorias(); // Llamar la función para obtener las categorías
+    }, []); // El arreglo vacío asegura que solo se ejecute una vez cuando el componente se monte
 
     const guardarProducto = async () => {
         // Datos "quemados" del producto
         const datosProducto = {
             nombre: "Producto de prueba",
             descripcion: "Este es un producto de prueba",
-            categoria: "1",  // Cambiar por una categoría válida
+            categoria: "6730cc4b9346a3b4b7f361f8",  // Cambiar por una categoría válida
             precioCompra: 100,
             precioVenta: 150,
             cantidad: 10,
@@ -68,7 +87,12 @@ export default function Publish_product() {
                 <p className="text-center fs-1 fw-bold">Registrar producto</p>
                 <div className="col">
                     <div className="row">
-                        <ContenedorCarruselYBoton />
+                        {/*Aquí va el carrusel*/}
+                        <img src="..." className="img-fluid" alt="..." />
+                        <div className="input-group">
+                            <input type="file" className="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+                            <button className="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+                        </div>
                     </div>
                 </div>
 
@@ -101,6 +125,21 @@ export default function Publish_product() {
                                 ))}
                             </select>
                         </div>
+
+                        <div className="row">
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Precio de compra</label>
+                                <input type="text" className="form-control" id="precioCompra" />
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="mb-3">
+                                <label htmlFor="exampleFormControlInput1" className="form-label">Precio de venta</label>
+                                <input type="text" className="form-control" id="precioVenta" />
+                            </div>
+                        </div>
+
                         <div className="row">
                             <div className="row">
                                 <div className="col d-flex justify-content-start">
