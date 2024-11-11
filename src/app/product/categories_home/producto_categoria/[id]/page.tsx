@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import ProductoCategoria from '@/components/tarjetas/producto-categoria';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { CategoriaDTO } from "@/types/dtos/categoria/categoriadto";
+import CategoriaService from "@/services/categoriaservice";
 
-// Definimos el tipo de los productos
+// Se define el tipo de los productos
 interface Producto {
     id: string;
     imagen: string;
@@ -13,13 +15,15 @@ interface Producto {
     precioVenta: number;
 }
 
+
 export default function ProductoCategoriaPage({ params }: { params: Promise<{ id: string }> }) {
     const [productos, setProductos] = useState<Producto[]>([]);
+    const [categoria, setCategoria] = useState<CategoriaDTO | null>(null); // Estado para almacenar la categoría
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [id, setId] = useState<string | null>(null); // Estado para almacenar el `id`
 
-    // Usamos React.use para desenvainar `params` y obtener el `id`
+    // Se usa React.use para desenvainar `params` y obtener el `id`
     useEffect(() => {
         const getParams = async () => {
             const resolvedParams = await params; // Desenvuelve la promesa de `params`
@@ -29,6 +33,7 @@ export default function ProductoCategoriaPage({ params }: { params: Promise<{ id
         getParams(); // Ejecutar la función para obtener el parámetro `id`
     }, [params]); // Dependencia de `params` para actualizar el `id`
 
+    // Llamada para obtener los productos de la categoría
     useEffect(() => {
         if (!id) return; // Si no hay `id`, no hacer la llamada a la API
 
@@ -50,6 +55,27 @@ export default function ProductoCategoriaPage({ params }: { params: Promise<{ id
         fetchProductos();
     }, [id]);
 
+    // Llamada para obtener la categoría
+    useEffect(() => {
+        if (!id) return;
+
+        const fetchCategoria = async () => {
+            try {
+                const res = await fetch(`/api/categorias/${id}`);
+                if (!res.ok) {
+                    throw new Error("Error al obtener la categoría");
+                }
+                const data = await res.json();
+                setCategoria(data);
+            } catch (err) {
+                setError("Hubo un problema al cargar la categoría.");
+            }
+        };
+
+        fetchCategoria();
+    }, [id]);
+
+    // Se muestra si está cargando
     if (loading) {
         return <p>Cargando productos...</p>;
     }
@@ -58,13 +84,15 @@ export default function ProductoCategoriaPage({ params }: { params: Promise<{ id
         return <p>{error}</p>;
     }
 
+    //----------------------Estructura del page---------------------------------
+
     return (
         <main>
             <section className="py-3 text-center container">
                 <div className="row">
                     <div className="col-lg-6 col-md-8 mx-auto">
-                        <h1 className="fw-light">Productos de la categoría: {id}</h1>
-                        <p className="lead text-body-secondary">Aquí encontrarás todos los productos de la categoría.</p>
+                        <h1 className="fw-light">Productos de la categoría: {categoria?.nombre ?? "No disponible"}</h1>
+                        <p className="lead text-body-secondary">Aquí encontrarás todos los productos de la categoría {categoria?.nombre}</p>
                     </div>
                 </div>
             </section>

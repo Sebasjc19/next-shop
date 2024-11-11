@@ -4,6 +4,27 @@ import CategoriaService from "@/services/categoriaservice";
 import connect from "@/lib/db";
 import { ok } from "assert";
 
+/*
+*  GET /api/categorias/:id
+*/
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+    await connect(); // Conectar a la base de datos
+
+    const { id } = params;
+
+    try {
+        const categoria = await CategoriaService.obtenerCategoriaPorId(id); // Se llama al método que obtiene la categoría por su ID
+        if (!categoria) {
+            return NextResponse.json({ error: "Categoría no encontrada" }, { status: 404 });
+        }
+        return NextResponse.json(categoria); // Se retorna la categoría si se encuentra
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return NextResponse.json({ error: error.message }, { status: 400 });
+        }
+        return NextResponse.json({ error: "Unknown error" }, { status: 400 });
+    }
+}
 
 /*
 *  PUT /api/categorias/:id
