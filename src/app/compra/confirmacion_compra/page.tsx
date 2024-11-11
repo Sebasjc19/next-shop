@@ -1,6 +1,6 @@
 "use client"
 
-import productos from "@/data/products"
+import productos from "@/data/productos"
 import Producto_perfil from "@/components/tarjetas/producto-perfil"
 import EncabezadoTitulo from "@/components/titulos/encabezado-titulo"
 import UbicacionCompra from "@/components/tarjetas/ubicacion-compra"
