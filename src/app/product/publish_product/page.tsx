@@ -10,6 +10,7 @@ import Carrusel_producto_publicacion from '@/components/imagenes/carrusel-produc
 import ContenedorCarruselYBoton from '@/components/botones/carrusel-y-boton';
 import AlertaExito from '@/components/alertas/exito';
 import ProductoServicio from '@/services/productoservice';
+import productos from '@/data/productos';
 
 export default function Publish_product() {
     const [categorias, setCategorias] = useState<any[]>([]); // inicialización con un array vacío
@@ -88,6 +89,12 @@ export default function Publish_product() {
                 <div className="col">
                     <div className="row">
                         {/*Aquí va el carrusel*/}
+                        <Carrusel_producto_publicacion images={[
+                            "https://www.koimoi.com/wp-content/new-galleries/2024/09/wild-robot-box-office-china-01.jpg",
+                            "https://i0.wp.com/cocalecas.net/wp-content/uploads/2024/09/the-wild-robot-1.jpg?ssl=1",
+                            "https://definicion.de/wp-content/uploads/2009/12/paisaje-1.jpg",
+                            "https://bargainfotos.com/blog/wp-content/uploads/2022/07/beautiful-shot-of-small-lake-with-wooden-rowboat-in-focus-and-breathtaking-clouds-in-the-sky.jpg"
+                        ]}/>
                         <img src="..." className="img-fluid" alt="..." />
                         <div className="input-group">
                             <input type="file" className="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />

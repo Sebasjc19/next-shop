@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import ProductoCard from "@/components/producto-card";
+import Categories_home from "./product/categories_home/page";
 
 export default function Home() {
 
@@ -21,22 +22,13 @@ export default function Home() {
 
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light">Album example</h1>
-            <p className="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+            <h1 className="fw-light">Next-shop</h1>
+            <p className="lead text-body-secondary">Encuentra lo que necesitas en cualquier momento</p>
           </div>
         </div>
       </section>
 
-      <div className="album py-5 bg-body-tertiary">
-        <div className="container">
-
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {productos.map(producto => (
-              <ProductoCard key={producto.id} producto={producto} />
-            ))}
-          </div>
-        </div>
-      </div>
+      <Categories_home/>
 
     </main>
   );
